@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Elsa's Oven – Homemade Cakes in Palakkad | Order on WhatsApp</title>
+<meta name="description" content="Elsa's Oven, Palakkad – homemade cakes, cupcakes, cheesecakes & kunafa. Customise your cake and order instantly on WhatsApp.">
+<meta name="theme-color" content="#8b1e4a">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Pacifico&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --berry:#8b1e4a; --berry-d:#5e0f31; --rose:#ff7aa2; --blush:#fff1f5; --cream:#fffaf5;
+  --cocoa:#3b1f1a; --gold:#f0b24a; --mint:#b9ead6; --wa:#25d366; --wa-d:#128c7e;
+  --ink:#2a1a1f; --muted:#7d6670; --card:#ffffff;
+  --r:22px; --shadow:0 18px 50px -18px rgba(139,30,74,.35);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',system-ui,sans-serif;color:var(--ink);background:var(--cream);overflow-x:hidden;line-height:1.6}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+h1,h2,h3{font-family:'Playfair Display',serif;line-height:1.15}
+.container{width:min(1180px,92%);margin-inline:auto}
+section{padding:96px 0;position:relative}
+.script{font-family:'Pacifico',cursive;color:var(--rose);font-size:1.25rem}
+.eyebrow{display:inline-flex;gap:8px;align-items:center;font-weight:600;letter-spacing:.14em;text-transform:uppercase;font-size:.78rem;color:var(--berry)}
+.eyebrow::before,.eyebrow::after{content:"";width:26px;height:2px;background:var(--rose);border-radius:2px}
+.sec-head{text-align:center;max-width:640px;margin:0 auto 52px}
+.sec-head h2{font-size:clamp(2rem,4.6vw,3.2rem);margin:12px 0 12px;color:var(--cocoa)}
+.sec-head p{color:var(--muted)}
+
+/* buttons */
+.btn{position:relative;overflow:hidden;display:inline-flex;align-items:center;gap:10px;padding:15px 28px;border-radius:999px;font-weight:700;font-size:1rem;transition:transform .25s,box-shadow .25s}
+.btn:hover{transform:translateY(-3px)}
+.btn:active{transform:scale(.97)}
+.btn-wa{background:linear-gradient(135deg,var(--wa),var(--wa-d));color:#fff;box-shadow:0 14px 30px -10px rgba(18,140,126,.7)}
+.btn-ghost{background:#fff;color:var(--berry);box-shadow:inset 0 0 0 2px var(--berry)}
+.btn-ghost:hover{background:var(--berry);color:#fff}
+.btn-berry{background:linear-gradient(135deg,var(--berry),#c2336c);color:#fff;box-shadow:0 14px 30px -12px rgba(139,30,74,.7)}
+.btn::after{content:"";position:absolute;top:0;left:-70%;width:50%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.45),transparent);transform:skewX(-20deg);transition:left .6s}
+.btn:hover::after{left:130%}
+.wa-ico{width:20px;height:20px;fill:currentColor;flex:none}
+
+/* preloader */
+#loader{position:fixed;inset:0;z-index:999;background:linear-gradient(160deg,#fff1f5,#ffe0ea);display:grid;place-items:center;transition:opacity .6s,visibility .6s}
+#loader.hide{opacity:0;visibility:hidden}
+.ld-box{text-align:center}
+.ld-cake{font-size:4.2rem;animation:bounce 1s infinite ease-in-out}
+.ld-box p{font-family:'Pacifico',cursive;color:var(--berry);font-size:1.4rem;margin-top:6px}
+.ld-bar{width:180px;height:6px;border-radius:6px;background:#fff;margin:16px auto 0;overflow:hidden}
+.ld-bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--rose),var(--berry));border-radius:6px;animation:load 1.3s forwards}
+@keyframes load{to{width:100%}}
+@keyframes bounce{0%,100%{transform:translateY(0) rotate(-6deg)}50%{transform:translateY(-18px) rotate(6deg)}}
+
+/* nav */
+header{position:fixed;top:0;left:0;right:0;z-index:60;transition:background .3s,box-shadow .3s,padding .3s;padding:18px 0}
+header.scrolled{background:rgba(255,250,245,.82);backdrop-filter:blur(14px);box-shadow:0 8px 30px -14px rgba(0,0,0,.18);padding:10px 0}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{display:flex;align-items:center;gap:10px;font-family:'Playfair Display',serif;font-weight:800;font-size:1.45rem;color:var(--berry)}
+.logo span.dot{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--rose),var(--berry));display:grid;place-items:center;color:#fff;font-size:1.2rem;box-shadow:0 8px 18px -6px rgba(139,30,74,.6)}
+.logo small{display:block;font-family:'DM Sans';font-weight:500;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-top:-4px}
+.links{display:flex;gap:30px;align-items:center}
+.links a.l{font-weight:600;font-size:.95rem;position:relative;padding:4px 0}
+.links a.l::after{content:"";position:absolute;left:0;bottom:-2px;width:0;height:2px;background:var(--rose);transition:width .3s}
+.links a.l:hover::after{width:100%}
+.nav-right{display:flex;gap:10px;align-items:center}
+.cart-btn{position:relative;width:48px;height:48px;border-radius:50%;background:#fff;box-shadow:var(--shadow);display:grid;place-items:center;font-size:1.25rem;transition:transform .25s}
+.cart-btn:hover{transform:scale(1.1) rotate(-6deg)}
+.cart-btn b{position:absolute;top:-4px;right:-4px;min-width:22px;height:22px;border-radius:50%;background:var(--berry);color:#fff;font-size:.72rem;display:grid;place-items:center;transform:scale(0);transition:transform .3s cubic-bezier(.3,1.8,.5,1)}
+.cart-btn b.show{transform:scale(1)}
+.burger{display:none;width:48px;height:48px;border-radius:50%;background:#fff;box-shadow:var(--shadow);place-items:center}
+.burger i,.burger i::before,.burger i::after{display:block;width:20px;height:2px;background:var(--berry);border-radius:2px;position:relative;transition:.3s}
+.burger i::before,.burger i::after{content:"";position:absolute;left:0}
+.burger i::before{top:-6px}.burger i::after{top:6px}
+.burger.open i{background:transparent}.burger.open i::before{top:0;transform:rotate(45deg)}.burger.open i::after{top:0;transform:rotate(-45deg)}
+
+/* hero */
+.hero{min-height:100vh;display:flex;align-items:center;padding:130px 0 80px;background:
+  radial-gradient(900px 500px at 85% 10%,#ffd3e1 0,transparent 60%),
+  radial-gradient(700px 500px at 0% 90%,#ffe9c7 0,transparent 60%),var(--blush);overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:50px;align-items:center}
+.hero h1{font-size:clamp(2.6rem,6.4vw,5rem);color:var(--cocoa);margin:14px 0 18px}
+.hero h1 em{font-style:italic;color:var(--berry);position:relative;white-space:nowrap}
+.hero h1 em::after{content:"";position:absolute;left:0;right:0;bottom:4px;height:12px;background:rgba(255,122,162,.35);z-index:-1;border-radius:8px;transform-origin:left;animation:underline 1.2s .8s both}
+@keyframes underline{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+.hero p.lead{font-size:1.15rem;color:var(--muted);max-width:520px;margin-bottom:30px}
+.hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:34px}
+.trust{display:flex;gap:26px;flex-wrap:wrap}
+.trust div{display:flex;flex-direction:column}
+.trust b{font-family:'Playfair Display';font-size:1.8rem;color:var(--berry)}
+.trust span{font-size:.82rem;color:var(--muted)}
+.hero-art{position:relative;aspect-ratio:1;max-width:540px;margin-inline:auto;width:100%}
+.blob{position:absolute;inset:6%;background:linear-gradient(135deg,var(--rose),var(--berry));border-radius:58% 42% 55% 45%/48% 56% 44% 52%;animation:morph 9s infinite ease-in-out;box-shadow:var(--shadow)}
+@keyframes morph{0%,100%{border-radius:58% 42% 55% 45%/48% 56% 44% 52%;transform:rotate(0)}50%{border-radius:42% 58% 45% 55%/56% 44% 56% 44%;transform:rotate(8deg)}}
+.hero-img{position:absolute;inset:12%;border-radius:50%;overflow:hidden;border:8px solid #fff;box-shadow:0 30px 60px -20px rgba(0,0,0,.45);animation:float 6s infinite ease-in-out}
+.hero-img img{width:100%;height:100%;object-fit:cover;transition:transform 1s}
+.hero-art:hover .hero-img img{transform:scale(1.12) rotate(3deg)}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-16px)}}
+.chip{position:absolute;background:#fff;border-radius:16px;padding:10px 16px;box-shadow:var(--shadow);font-weight:700;font-size:.88rem;display:flex;align-items:center;gap:8px;animation:float 5s infinite ease-in-out}
+.chip.c1{top:6%;left:-2%;animation-delay:-1s}
+.chip.c2{bottom:12%;left:-6%;animation-delay:-2.5s}
+.chip.c3{top:30%;right:-4%;animation-delay:-3.5s}
+.sprinkle{position:absolute;width:10px;height:22px;border-radius:10px;opacity:.7;animation:fall linear infinite;pointer-events:none}
+@keyframes fall{0%{transform:translateY(-10vh) rotate(0)}100%{transform:translateY(110vh) rotate(540deg)}}
+
+/* marquee */
+.marquee{background:var(--berry);color:#fff;overflow:hidden;padding:16px 0;transform:rotate(-1.2deg) scale(1.03);margin:-20px 0;position:relative;z-index:3;box-shadow:0 10px 30px -10px rgba(94,15,49,.6)}
+.marquee-track{display:flex;gap:46px;width:max-content;animation:scroll 28s linear infinite;font-family:'Playfair Display';font-weight:600;font-size:1.3rem;white-space:nowrap}
+.marquee:hover .marquee-track{animation-play-state:paused}
+@keyframes scroll{to{transform:translateX(-50%)}}
+
+/* menu */
+#menu{padding-top:130px}
+.filters{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:40px}
+.f{padding:10px 22px;border-radius:999px;background:#fff;font-weight:600;font-size:.92rem;box-shadow:0 4px 14px -6px rgba(0,0,0,.2);transition:.25s}
+.f:hover{transform:translateY(-2px)}
+.f.on{background:linear-gradient(135deg,var(--berry),#c2336c);color:#fff;box-shadow:0 10px 22px -8px rgba(139,30,74,.7)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:26px}
+.card{background:var(--card);border-radius:var(--r);overflow:hidden;box-shadow:0 10px 34px -16px rgba(60,20,40,.28);transition:transform .35s,box-shadow .35s;display:flex;flex-direction:column;transform-style:preserve-3d}
+.card:hover{box-shadow:var(--shadow)}
+.card.hide{display:none}
+.card.pop{animation:pop .5s both}
+@keyframes pop{from{opacity:0;transform:scale(.9) translateY(20px)}to{opacity:1;transform:none}}
+.thumb{position:relative;aspect-ratio:4/3.2;overflow:hidden;display:grid;place-items:center;font-size:4rem}
+.thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .7s}
+.card:hover .thumb img{transform:scale(1.1)}
+.tag{position:absolute;top:12px;left:12px;background:#fff;color:var(--berry);font-weight:700;font-size:.72rem;padding:5px 12px;border-radius:999px;z-index:2;box-shadow:0 4px 12px -4px rgba(0,0,0,.3)}
+.fav{position:absolute;top:10px;right:10px;width:38px;height:38px;border-radius:50%;background:#fff;z-index:2;display:grid;place-items:center;font-size:1.05rem;transition:transform .25s;filter:grayscale(1)}
+.fav.on{filter:none;animation:heart .5s}
+.fav:hover{transform:scale(1.15)}
+@keyframes heart{50%{transform:scale(1.5)}}
+.cbody{padding:18px 20px 20px;display:flex;flex-direction:column;gap:10px;flex:1}
+.cbody h3{font-size:1.25rem;color:var(--cocoa)}
+.cbody p{font-size:.9rem;color:var(--muted);flex:1}
+.sizes{display:flex;gap:6px;flex-wrap:wrap}
+.sz{padding:6px 12px;border-radius:10px;font-size:.78rem;font-weight:600;background:var(--blush);color:var(--berry);transition:.2s}
+.sz.on{background:var(--berry);color:#fff}
+.crow{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:4px}
+.price{font-family:'Playfair Display';font-weight:700;font-size:1.5rem;color:var(--berry)}
+.price small{font-family:'DM Sans';font-size:.7rem;color:var(--muted);font-weight:500;display:block;margin-top:-4px}
+.add{padding:11px 18px;border-radius:999px;background:var(--cocoa);color:#fff;font-weight:700;font-size:.88rem;transition:.25s;display:inline-flex;gap:6px;align-items:center}
+.add:hover{background:var(--berry);transform:scale(1.05)}
+.note{text-align:center;margin-top:30px;font-size:.84rem;color:var(--muted)}
+
+/* builder */
+#custom{background:linear-gradient(180deg,var(--cream),var(--blush))}
+.builder{display:grid;grid-template-columns:1fr 1fr;gap:34px;background:#fff;border-radius:34px;padding:38px;box-shadow:var(--shadow)}
+.preview{background:radial-gradient(circle at 50% 30%,#fff 0,#ffe6ee 100%);border-radius:26px;display:grid;place-items:center;padding:24px;position:relative;min-height:380px;overflow:hidden}
+.preview svg{width:100%;max-width:340px;height:auto;filter:drop-shadow(0 18px 20px rgba(139,30,74,.25))}
+.preview .est{position:absolute;bottom:16px;left:50%;transform:translateX(-50%);background:var(--cocoa);color:#fff;border-radius:999px;padding:10px 22px;font-weight:700;white-space:nowrap}
+.preview .est b{color:var(--gold);font-family:'Playfair Display';font-size:1.2rem}
+.opts{display:flex;flex-direction:column;gap:20px}
+.opt label.t{display:block;font-weight:700;font-size:.85rem;color:var(--cocoa);margin-bottom:8px;letter-spacing:.04em;text-transform:uppercase}
+.pills{display:flex;flex-wrap:wrap;gap:8px}
+.pill{padding:9px 16px;border-radius:12px;background:var(--blush);font-weight:600;font-size:.88rem;border:2px solid transparent;transition:.2s}
+.pill:hover{transform:translateY(-2px)}
+.pill.on{border-color:var(--berry);background:#fff;color:var(--berry);box-shadow:0 6px 14px -8px rgba(139,30,74,.6)}
+.swatches{display:flex;gap:10px}
+.sw{width:36px;height:36px;border-radius:50%;border:3px solid #fff;box-shadow:0 0 0 2px #e6d4da;transition:.25s}
+.sw.on{box-shadow:0 0 0 3px var(--berry);transform:scale(1.15)}
+input[type=text],input[type=tel],input[type=date],input[type=time],select,textarea{width:100%;padding:13px 16px;border-radius:14px;border:2px solid #f0dce3;background:#fff;font-family:inherit;font-size:.95rem;color:var(--ink);transition:.2s;outline:none}
+input:focus,select:focus,textarea:focus{border-color:var(--rose);box-shadow:0 0 0 4px rgba(255,122,162,.18)}
+.switch{display:flex;align-items:center;gap:12px;font-weight:600;cursor:pointer;font-size:.92rem}
+.switch input{display:none}
+.switch i{width:48px;height:28px;border-radius:28px;background:#e3d3d9;position:relative;transition:.3s;flex:none}
+.switch i::after{content:"";position:absolute;top:3px;left:3px;width:22px;height:22px;border-radius:50%;background:#fff;transition:.3s;box-shadow:0 2px 6px rgba(0,0,0,.25)}
+.switch input:checked+i{background:#3fb97a}.switch input:checked+i::after{left:23px}
+
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:26px;counter-reset:s}
+.step{background:#fff;border-radius:var(--r);padding:34px 26px;text-align:center;box-shadow:0 10px 34px -18px rgba(60,20,40,.3);position:relative;transition:.35s}
+.step:hover{transform:translateY(-10px);box-shadow:var(--shadow)}
+.step .ic{width:78px;height:78px;border-radius:26px;background:linear-gradient(135deg,var(--blush),#ffd3e1);display:grid;place-items:center;font-size:2.2rem;margin:0 auto 18px;transition:.4s}
+.step:hover .ic{transform:rotate(-10deg) scale(1.1)}
+.step h3{font-size:1.2rem;margin-bottom:8px;color:var(--cocoa)}
+.step p{font-size:.92rem;color:var(--muted)}
+.step::before{counter-increment:s;content:"0" counter(s);position:absolute;top:14px;right:20px;font-family:'Playfair Display';font-weight:800;font-size:1.8rem;color:rgba(139,30,74,.12)}
+
+/* stats */
+.stats{background:linear-gradient(135deg,var(--berry-d),var(--berry));color:#fff;border-radius:34px;padding:50px 30px;display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:24px;text-align:center;box-shadow:var(--shadow);position:relative;overflow:hidden}
+.stats::before{content:"🍰🧁🎂🍪🍩";position:absolute;inset:0;font-size:5rem;opacity:.06;letter-spacing:40px;line-height:2.2;pointer-events:none}
+.stats b{display:block;font-family:'Playfair Display';font-size:3rem;color:var(--gold)}
+.stats span{opacity:.85;font-size:.92rem}
+
+/* gallery */
+.gal{columns:4 220px;column-gap:16px}
+.gal figure{break-inside:avoid;margin-bottom:16px;border-radius:20px;overflow:hidden;position:relative;cursor:zoom-in;background:var(--blush);min-height:140px}
+.gal img{width:100%;transition:transform .6s}
+.gal figure:hover img{transform:scale(1.1)}
+.gal figure::after{content:"🔍";position:absolute;inset:0;display:grid;place-items:center;font-size:2rem;background:rgba(139,30,74,.45);opacity:0;transition:.3s}
+.gal figure:hover::after{opacity:1}
+#lb{position:fixed;inset:0;z-index:200;background:rgba(30,10,20,.9);display:grid;place-items:center;opacity:0;visibility:hidden;transition:.3s;padding:20px}
+#lb.open{opacity:1;visibility:visible}
+#lb img{max-height:86vh;border-radius:18px;transform:scale(.9);transition:.4s}
+#lb.open img{transform:scale(1)}
+#lb button{position:absolute;top:20px;right:24px;color:#fff;font-size:2rem}
+
+/* contact */
+.contact{display:grid;grid-template-columns:1fr 1.1fr;gap:34px}
+.info{background:#fff;border-radius:30px;padding:36px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:22px}
+.info h3{font-size:1.8rem;color:var(--cocoa)}
+.row{display:flex;gap:16px;align-items:flex-start}
+.row .ic{width:48px;height:48px;border-radius:16px;background:var(--blush);display:grid;place-items:center;font-size:1.3rem;flex:none}
+.row b{display:block;font-size:.8rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted)}
+.row a:hover{color:var(--berry)}
+.map{border-radius:30px;overflow:hidden;box-shadow:var(--shadow);min-height:380px;background:var(--blush)}
+.map iframe{width:100%;height:100%;min-height:380px;border:0}
+
+/* cta band */
+.band{background:linear-gradient(135deg,#ff7aa2,#8b1e4a);border-radius:34px;padding:60px 30px;text-align:center;color:#fff;position:relative;overflow:hidden;box-shadow:var(--shadow)}
+.band h2{font-size:clamp(1.9rem,4.4vw,3rem);margin-bottom:12px}
+.band p{opacity:.92;max-width:520px;margin:0 auto 26px}
+.band .btn{background:#fff;color:var(--wa-d)}
+.band::before,.band::after{content:"";position:absolute;width:260px;height:260px;border-radius:50%;background:rgba(255,255,255,.1)}
+.band::before{top:-90px;left:-70px}.band::after{bottom:-110px;right:-60px}
+
+footer{background:var(--cocoa);color:#e9d8dc;padding:60px 0 26px;margin-top:96px}
+.fgrid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:34px;margin-bottom:34px}
+footer h4{font-family:'Playfair Display';color:#fff;margin-bottom:12px;font-size:1.15rem}
+footer a{display:block;padding:3px 0;opacity:.85;transition:.2s}footer a:hover{opacity:1;color:var(--rose);transform:translateX(4px)}
+.copy{border-top:1px solid rgba(255,255,255,.12);padding-top:20px;font-size:.82rem;opacity:.7;text-align:center}
+
+/* floating wa */
+.fwa{position:fixed;right:20px;bottom:20px;z-index:70;width:62px;height:62px;border-radius:50%;background:linear-gradient(135deg,var(--wa),var(--wa-d));display:grid;place-items:center;color:#fff;box-shadow:0 14px 30px -8px rgba(18,140,126,.8);animation:pulse 2.2s infinite;transition:transform .25s}
+.fwa:hover{transform:scale(1.12) rotate(-8deg)}
+.fwa svg{width:32px;height:32px;fill:#fff}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(37,211,102,.6),0 14px 30px -8px rgba(18,140,126,.8)}70%{box-shadow:0 0 0 22px rgba(37,211,102,0),0 14px 30px -8px rgba(18,140,126,.8)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
+
+/* drawer */
+#ov{position:fixed;inset:0;background:rgba(40,10,25,.5);backdrop-filter:blur(4px);z-index:90;opacity:0;visibility:hidden;transition:.3s}
+#ov.open{opacity:1;visibility:visible}
+#drawer{position:fixed;top:0;right:0;bottom:0;width:min(450px,100%);background:var(--cream);z-index:100;transform:translateX(105%);transition:transform .45s cubic-bezier(.2,.9,.3,1);display:flex;flex-direction:column;box-shadow:-20px 0 60px -20px rgba(0,0,0,.4)}
+#drawer.open{transform:none}
+.dh{display:flex;justify-content:space-between;align-items:center;padding:22px 24px;border-bottom:1px solid #f0dce3}
+.dh h3{font-size:1.5rem;color:var(--berry)}
+.dh button{width:40px;height:40px;border-radius:50%;background:#fff;font-size:1.2rem;box-shadow:0 4px 12px -4px rgba(0,0,0,.25)}
+.db{flex:1;overflow:auto;padding:20px 24px}
+.empty{text-align:center;padding:40px 0;color:var(--muted)}
+.empty div{font-size:3.6rem;margin-bottom:6px}
+.it{display:flex;gap:14px;align-items:center;background:#fff;border-radius:18px;padding:10px;margin-bottom:12px;box-shadow:0 6px 18px -10px rgba(0,0,0,.25);animation:pop .4s both}
+.it .im{width:64px;height:64px;border-radius:14px;overflow:hidden;flex:none;display:grid;place-items:center;font-size:1.8rem;background:var(--blush)}
+.it .im img{width:100%;height:100%;object-fit:cover}
+.it .m{flex:1;min-width:0}
+.it .m b{display:block;font-size:.95rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.it .m span{font-size:.78rem;color:var(--muted)}
+.it .m em{font-style:normal;display:block;font-weight:700;color:var(--berry);font-size:.95rem}
+.qty{display:flex;align-items:center;gap:8px;background:var(--blush);border-radius:999px;padding:3px}
+.qty button{width:28px;height:28px;border-radius:50%;background:#fff;font-weight:700;color:var(--berry)}
+.qty span{min-width:18px;text-align:center;font-weight:700;font-size:.9rem}
+.form{display:grid;gap:12px;margin-top:20px}
+.form .two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.form label{font-size:.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;display:block;margin-bottom:5px}
+.seg{display:grid;grid-template-columns:1fr 1fr;background:var(--blush);border-radius:14px;padding:4px}
+.seg button{padding:10px;border-radius:11px;font-weight:700;font-size:.9rem;transition:.25s}
+.seg button.on{background:#fff;color:var(--berry);box-shadow:0 4px 10px -4px rgba(0,0,0,.25)}
+.df{padding:18px 24px;border-top:1px solid #f0dce3;background:#fff}
+.tot{display:flex;justify-content:space-between;font-weight:700;margin-bottom:12px;font-size:1.05rem}
+.tot b{font-family:'Playfair Display';font-size:1.5rem;color:var(--berry)}
+.df .btn{width:100%;justify-content:center}
+
+/* toast & confetti */
+#toast{position:fixed;left:50%;bottom:30px;transform:translate(-50%,120px);background:var(--cocoa);color:#fff;padding:14px 24px;border-radius:999px;z-index:300;font-weight:600;transition:transform .45s cubic-bezier(.3,1.5,.5,1);box-shadow:0 14px 34px -10px rgba(0,0,0,.5);max-width:92vw;text-align:center}
+#toast.show{transform:translate(-50%,0)}
+.cf{position:fixed;top:-20px;width:10px;height:14px;z-index:400;pointer-events:none;animation:cf 2.2s forwards ease-in}
+@keyframes cf{to{transform:translateY(110vh) rotate(720deg);opacity:.9}}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(40px);transition:opacity .8s,transform .8s}
+.rv.in{opacity:1;transform:none}
+.rv.d1{transition-delay:.1s}.rv.d2{transition-delay:.2s}.rv.d3{transition-delay:.3s}
+
+/* responsive */
+@media(max-width:960px){
+  .hero-grid,.builder,.contact{grid-template-columns:1fr}
+  .hero{padding-top:120px;text-align:center}
+  .hero p.lead{margin-inline:auto}
+  .hero-cta,.trust{justify-content:center}
+  .hero-art{max-width:420px}
+  .chip.c1{left:0}.chip.c2{left:0}.chip.c3{right:0}
+  .fgrid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:820px){
+  .burger{display:grid}
+  .links{position:fixed;top:0;right:0;bottom:0;width:min(300px,80%);background:var(--cream);flex-direction:column;justify-content:center;gap:26px;transform:translateX(105%);transition:transform .4s;box-shadow:-20px 0 50px -20px rgba(0,0,0,.4);font-size:1.15rem;z-index:-1}
+  .links.open{transform:none}
+  .links .btn{display:none}
+}
+@media(max-width:560px){
+  section{padding:70px 0}
+  .builder{padding:20px}
+  .fgrid{grid-template-columns:1fr}
+  .form .two{grid-template-columns:1fr}
+  .info{padding:24px}
+  .hide-sm{display:none}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<div id="loader"><div class="ld-box"><div class="ld-cake">🎂</div><p>Baking something sweet…</p><div class="ld-bar"><i></i></div></div></div>
+
+<header id="hd">
+  <div class="container nav">
+    <a href="#home" class="logo"><span class="dot">🧁</span><div>Elsa's Oven<small>Homemade · Palakkad</small></div></a>
+    <nav class="links" id="links">
+      <a class="l" href="#menu">Our Cakes</a>
+      <a class="l" href="#custom">Design Yours</a>
+      <a class="l" href="#how">How it Works</a>
+      <a class="l" href="#gallery">Gallery</a>
+      <a class="l" href="#contact">Visit Us</a>
+    </nav>
+    <div class="nav-right">
+      <a class="btn btn-wa hide-sm" id="navWa" target="_blank" rel="noopener" style="padding:11px 20px;font-size:.9rem"><svg class="wa-ico" viewBox="0 0 32 32"><path d="M16.04 3C8.84 3 3 8.8 3 15.96c0 2.28.6 4.5 1.74 6.46L3 29l6.76-1.7a13.1 13.1 0 0 0 6.28 1.6C23.2 28.9 29 23.1 29 15.96 29 8.8 23.2 3 16.04 3zm0 23.7c-1.98 0-3.92-.54-5.6-1.54l-.4-.24-4.02 1.02 1.08-3.92-.26-.4a10.7 10.7 0 0 1-1.66-5.66c0-5.94 4.86-10.78 10.86-10.78 5.98 0 10.84 4.84 10.84 10.78 0 5.94-4.86 10.74-10.84 10.74zm5.94-8.06c-.32-.16-1.92-.94-2.22-1.06-.3-.1-.52-.16-.74.16-.22.32-.84 1.06-1.04 1.28-.18.2-.38.24-.7.08-.32-.16-1.38-.5-2.62-1.6-.96-.86-1.62-1.92-1.8-2.24-.2-.32-.02-.5.14-.66.14-.14.32-.38.48-.56.16-.2.22-.32.32-.54.1-.2.06-.4-.02-.56-.08-.16-.74-1.78-1-2.44-.26-.64-.54-.54-.74-.56h-.62c-.2 0-.56.08-.86.4-.3.32-1.14 1.12-1.14 2.72s1.18 3.16 1.34 3.38c.16.2 2.3 3.5 5.58 4.92 3.28 1.4 3.28.94 3.88.88.6-.06 1.92-.78 2.18-1.54.28-.76.28-1.4.2-1.54-.08-.14-.3-.22-.62-.38z"/></svg>Order Now</a>
+      <button class="cart-btn" id="cartBtn" aria-label="Open order basket">🛍️<b id="cartCount">0</b></button>
+      <button class="burger" id="burger" aria-label="Menu"><i></i></button>
+    </div>
+  </div>
+</header>
+
+<main id="home">
+<!-- HERO -->
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <span class="eyebrow rv">Homemade with love · Palakkad</span>
+      <h1 class="rv d1">Cakes that make every <em>moment</em> sweeter</h1>
+      <p class="lead rv d2">Fresh, homemade cakes, cupcakes, cheesecakes &amp; kunafa — baked to order in Palakkad. Pick your favourite, customise it, and place your order on WhatsApp in under a minute.</p>
+      <div class="hero-cta rv d3">
+        <a href="#menu" class="btn btn-berry">🍰 Explore Cakes</a>
+        <a class="btn btn-wa waLink" target="_blank" rel="noopener"><svg class="wa-ico" viewBox="0 0 32 32"><use href="#waIcon"/></svg>Chat on WhatsApp</a>
+      </div>
+      <div class="trust rv d3">
+        <div><b>4.8★</b><span>Rated on Justdial</span></div>
+        <div><b>190+</b><span>Happy ratings</span></div>
+        <div><b>100%</b><span>Homemade</span></div>
+      </div>
+    </div>
+    <div class="hero-art rv d2">
+      <div class="blob"></div>
+      <div class="hero-img"><img data-src="hero" alt="Freshly baked celebration cake"></div>
+      <div class="chip c1">🎂 Custom cakes</div>
+      <div class="chip c2">⭐ 4.8 on Justdial</div>
+      <div class="chip c3">🚚 Order on WhatsApp</div>
+    </div>
+  </div>
+</section>
+
+<div class="marquee" aria-hidden="true"><div class="marquee-track" id="mq"></div></div>
+
+<!-- MENU -->
+<section id="menu">
+  <div class="container">
+    <div class="sec-head rv"><span class="eyebrow">Our Menu</span><h2>Baked fresh, just for you</h2><p>Tap a size, add to your basket and send the whole order to us on WhatsApp.</p></div>
+    <div class="filters rv" id="filters"></div>
+    <div class="grid" id="grid"></div>
+    <p class="note">Prices shown are sample prices for this demo. Final prices are confirmed by Elsa's Oven on WhatsApp.</p>
+  </div>
+</section>
+
+<!-- BUILDER -->
+<section id="custom">
+  <div class="container">
+    <div class="sec-head rv"><span class="eyebrow">Design Your Cake</span><h2>Dream it. We'll bake it.</h2><p>Play with flavours, tiers and colours — watch your cake come alive, then send the design to us.</p></div>
+    <div class="builder rv">
+      <div class="preview">
+        <svg id="cakeSvg" viewBox="0 0 300 320" xmlns="http://www.w3.org/2000/svg"></svg>
+        <div class="est">Estimated <b id="est">₹0</b></div>
+      </div>
+      <div class="opts">
+        <div class="opt"><label class="t">Flavour</label><div class="pills" id="bFlavour"></div></div>
+        <div class="opt"><label class="t">Tiers</label><div class="pills" id="bTiers"></div></div>
+        <div class="opt"><label class="t">Weight</label><div class="pills" id="bWeight"></div></div>
+        <div class="opt"><label class="t">Frosting colour</label><div class="swatches" id="bColor"></div></div>
+        <div class="opt"><label class="t">Message on cake</label><input type="text" id="bMsg" maxlength="22" placeholder="Happy Birthday Anu!"></div>
+        <label class="switch"><input type="checkbox" id="bEgg"><i></i> Make it eggless (+₹50)</label>
+        <button class="btn btn-wa" id="bSend"><svg class="wa-ico" viewBox="0 0 32 32"><use href="#waIcon"/></svg>Send this design on WhatsApp</button>
+        <button class="btn btn-ghost" id="bAdd">Add to basket instead</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW -->
+<section id="how">
+  <div class="container">
+    <div class="sec-head rv"><span class="eyebrow">Simple &amp; Quick</span><h2>Order in 3 easy steps</h2><p>No apps, no sign-ups. Just WhatsApp.</p></div>
+    <div class="steps">
+      <div class="step rv"><div class="ic">🍰</div><h3>Pick your cake</h3><p>Choose from our menu or design your own with the cake studio.</p></div>
+      <div class="step rv d1"><div class="ic">📝</div><h3>Add your details</h3><p>Tell us the date, time, message on the cake and delivery or pickup.</p></div>
+      <div class="step rv d2"><div class="ic">💬</div><h3>Send on WhatsApp</h3><p>Your order opens as a ready message. Tap send — we confirm instantly.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section style="padding:0">
+  <div class="container">
+    <div class="stats rv">
+      <div><b data-n="4.8" data-d="1">0</b><span>Justdial rating</span></div>
+      <div><b data-n="190" data-p="+">0</b><span>Customer ratings</span></div>
+      <div><b data-n="5" data-p="+">0</b><span>Treat categories</span></div>
+      <div><b data-n="100" data-p="%">0</b><span>Homemade goodness</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="container">
+    <div class="sec-head rv"><span class="eyebrow">Sweet Moments</span><h2>A peek at our creations</h2><p>Tap any photo to see it up close.</p></div>
+    <div class="gal rv" id="gal"></div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section style="padding:0">
+  <div class="container">
+    <div class="band rv">
+      <h2>Got a celebration coming up?</h2>
+      <p>Birthdays, anniversaries, baby showers or just because — tell us the occasion and we'll make it special.</p>
+      <a class="btn waLink" target="_blank" rel="noopener"><svg class="wa-ico" viewBox="0 0 32 32"><use href="#waIcon"/></svg>Message us on WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="sec-head rv"><span class="eyebrow">Find Us</span><h2>Come say hello</h2><p>Visit our kitchen in Palakkad or order from the comfort of your home.</p></div>
+    <div class="contact">
+      <div class="info rv">
+        <h3>Elsa's Oven</h3>
+        <div class="row"><div class="ic">📍</div><div><b>Address</b>English Church Road, Opposite Big Bazaar,<br>Thayilpatti, Pudupalli Theruvu, Nurani,<br>Palakkad, Kerala 678014</div></div>
+        <div class="row"><div class="ic">📞</div><div><b>Call / WhatsApp</b><a href="tel:+918921289216">+91 89212 89216</a></div></div>
+        <div class="row"><div class="ic">✉️</div><div><b>Email</b><a href="mailto:elsamjwork@gmail.com">elsamjwork@gmail.com</a></div></div>
+        <div class="row"><div class="ic">⭐</div><div><b>Rated on Justdial</b>4.8 / 5 from 190+ ratings</div></div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap">
+          <a class="btn btn-wa waLink" target="_blank" rel="noopener">WhatsApp</a>
+          <a class="btn btn-ghost" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Elsa%27s+Oven+English+Church+Road+Palakkad">Get directions</a>
+        </div>
+      </div>
+      <div class="map rv d1"><iframe loading="lazy" title="Elsa's Oven location" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Elsa%27s+Oven+English+Church+Road+Palakkad+678014&output=embed"></iframe></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="fgrid">
+      <div><div class="logo" style="color:#fff;margin-bottom:12px"><span class="dot">🧁</span><div>Elsa's Oven</div></div><p style="opacity:.8;max-width:320px">Homemade cakes, cupcakes, kunafa, cheesecakes &amp; more — baked with love in Palakkad.</p></div>
+      <div><h4>Explore</h4><a href="#menu">Our Cakes</a><a href="#custom">Design Yours</a><a href="#gallery">Gallery</a><a href="#contact">Visit Us</a></div>
+      <div><h4>Connect</h4><a class="waLink" target="_blank" rel="noopener">WhatsApp</a><a href="tel:+918921289216">+91 89212 89216</a><a href="https://www.facebook.com/elsasoven98/" target="_blank" rel="noopener">Facebook</a></div>
+    </div>
+    <div class="copy">© <span id="yr"></span> Elsa's Oven, Palakkad · Website demo concept</div>
+  </div>
+</footer>
+
+<a class="fwa waLink" target="_blank" rel="noopener" aria-label="Order on WhatsApp"><svg viewBox="0 0 32 32"><use href="#waIcon"/></svg></a>
+
+<!-- basket drawer -->
+<div id="ov"></div>
+<aside id="drawer" aria-label="Order basket">
+  <div class="dh"><h3>Your Order 🛍️</h3><button id="closeD" aria-label="Close">✕</button></div>
+  <div class="db" id="items"></div>
+  <div class="df">
+    <div id="formWrap" style="display:none;max-height:42vh;overflow:auto;padding-bottom:6px">
+      <div class="form">
+        <div class="two"><div><label>Your name *</label><input type="text" id="fName" placeholder="Anu Mathew"></div><div><label>Phone</label><input type="tel" id="fPhone" placeholder="98xxxxxx"></div></div>
+        <div class="two"><div><label>Date needed</label><input type="date" id="fDate"></div><div><label>Time</label><input type="time" id="fTime"></div></div>
+        <div class="seg" id="mode"><button class="on" data-m="Pickup">🏪 Pickup</button><button data-m="Delivery">🚚 Delivery</button></div>
+        <div id="addrBox" style="display:none"><label>Delivery address</label><textarea id="fAddr" rows="2" placeholder="House name, area, landmark"></textarea></div>
+        <div><label>Message on cake / notes</label><input type="text" id="fNote" placeholder="Happy Birthday!"></div>
+      </div>
+    </div>
+    <div class="tot" style="margin-top:12px"><span>Estimated total</span><b id="total">₹0</b></div>
+    <button class="btn btn-wa" id="sendOrder"><svg class="wa-ico" viewBox="0 0 32 32"><use href="#waIcon"/></svg>Send order on WhatsApp</button>
+  </div>
+</aside>
+
+<div id="lb"><button aria-label="Close">✕</button><img alt=""></div>
+<div id="toast"></div>
+
+<!-- shared whatsapp icon -->
+<svg width="0" height="0" style="position:absolute"><defs><symbol id="waIcon" viewBox="0 0 32 32"><path d="M16.04 3C8.84 3 3 8.8 3 15.96c0 2.28.6 4.5 1.74 6.46L3 29l6.76-1.7a13.1 13.1 0 0 0 6.28 1.6C23.2 28.9 29 23.1 29 15.96 29 8.8 23.2 3 16.04 3zm0 23.7c-1.98 0-3.92-.54-5.6-1.54l-.4-.24-4.02 1.02 1.08-3.92-.26-.4a10.7 10.7 0 0 1-1.66-5.66c0-5.94 4.86-10.78 10.86-10.78 5.98 0 10.84 4.84 10.84 10.78 0 5.94-4.86 10.74-10.84 10.74zm5.94-8.06c-.32-.16-1.92-.94-2.22-1.06-.3-.1-.52-.16-.74.16-.22.32-.84 1.06-1.04 1.28-.18.2-.38.24-.7.08-.32-.16-1.38-.5-2.62-1.6-.96-.86-1.62-1.92-1.8-2.24-.2-.32-.02-.5.14-.66.14-.14.32-.38.48-.56.16-.2.22-.32.32-.54.1-.2.06-.4-.02-.56-.08-.16-.74-1.78-1-2.44-.26-.64-.54-.54-.74-.56h-.62c-.2 0-.56.08-.86.4-.3.32-1.14 1.12-1.14 2.72s1.18 3.16 1.34 3.38c.16.2 2.3 3.5 5.58 4.92 3.28 1.4 3.28.94 3.88.88.6-.06 1.92-.78 2.18-1.54.28-.76.28-1.4.2-1.54-.08-.14-.3-.22-.62-.38z"/></symbol></defs></svg>
+
+<script>
+(function(){
+'use strict';
+var PHONE='918921289216';
+var BIZ="Elsa's Oven";
+var $=function(s,c){return (c||document).querySelector(s)};
+var $$=function(s,c){return Array.prototype.slice.call((c||document).querySelectorAll(s))};
+var rs=function(n){return '₹'+Number(n).toLocaleString('en-IN')};
+var U=function(id,w){return 'https://images.unsplash.com/photo-'+id+'?auto=format&fit=crop&w='+(w||800)+'&q=80'};
+
+/* ---------- data (sample prices) ---------- */
+var P=[
+ {id:'choc',name:'Chocolate Truffle Cake',cat:'Cakes',tag:'Bestseller',emoji:'🍫',g:['#6b3a2a','#3b1f1a'],img:U('1578985545062-69928b1d9587'),d:'Rich dark chocolate sponge layered with silky ganache and a glossy truffle finish.',v:[['500 g',650],['1 kg',1250],['2 kg',2400]]},
+ {id:'rv',name:'Red Velvet Cake',cat:'Cakes',tag:'Fan favourite',emoji:'❤️',g:['#b3243f','#6d0f25'],img:U('1586788680434-30d324b2d46f'),d:'Velvety red sponge with tangy cream-cheese frosting. Pure romance on a plate.',v:[['500 g',750],['1 kg',1450],['2 kg',2800]]},
+ {id:'teddy',name:'Teddy Bear Birthday Cake',cat:'Cakes',tag:'Kids love it',emoji:'🧸',g:['#f5c6a5','#d98e6a'],img:U('1558301211-0d8c8ddee6ec'),d:'An adorable teddy bear cake that kids adore — cuddly, cute and delicious.',v:[['1 kg',1500],['1.5 kg',2200],['2 kg',2900]]},
+ {id:'bf',name:'Black Forest Cake',cat:'Cakes',tag:'Classic',emoji:'🍒',g:['#4a2a2e','#25141a'],img:U('1606890737304-57a1ca8a5b62'),d:'Chocolate sponge, whipped cream and cherries — the timeless celebration cake.',v:[['500 g',600],['1 kg',1150],['2 kg',2200]]},
+ {id:'fruit',name:'Fresh Fruit Cake',cat:'Cakes',tag:'Fresh',emoji:'🍓',g:['#ff9aa8','#ff5d7a'],img:U('1464349095431-e9a21285b5f3'),d:'Light vanilla sponge, fresh cream and a crown of seasonal fruits.',v:[['500 g',700],['1 kg',1350],['2 kg',2600]]},
+ {id:'bfly',name:'Butterscotch Crunch',cat:'Cakes',tag:'Crunchy',emoji:'🍯',g:['#f3c15f','#d9912b'],img:U('1565958011703-44f9829ba187'),d:'Golden butterscotch cream with caramel praline crunch in every bite.',v:[['500 g',620],['1 kg',1200],['2 kg',2300]]},
+ {id:'cc1',name:'Classic Cupcakes',cat:'Cupcakes',tag:'Box of joy',emoji:'🧁',g:['#ffc2d4','#ff8fb0'],img:U('1426869884541-df7117556757'),d:'Soft, fluffy cupcakes topped with swirls of buttercream in assorted flavours.',v:[['Box of 4',280],['Box of 6',400],['Box of 12',780]]},
+ {id:'cc2',name:'Choco Chip Cupcakes',cat:'Cupcakes',tag:'New',emoji:'🍪',g:['#a8714f','#6b3a2a'],img:U('1587668178277-295251f900ce'),d:'Chocolate cupcakes loaded with chips and finished with creamy ganache.',v:[['Box of 4',300],['Box of 6',430],['Box of 12',820]]},
+ {id:'ch1',name:'Baked Cheesecake',cat:'Cheesecakes',tag:'Creamy',emoji:'🍰',g:['#fff0c9','#f5d18a'],img:U('1533134242443-d4fd215305ad'),d:'Velvety baked cheesecake on a buttery biscuit base with a berry topping.',v:[['Slice',180],['500 g',850],['1 kg',1600]]},
+ {id:'ch2',name:'Blueberry Cheesecake',cat:'Cheesecakes',tag:'Fruity',emoji:'🫐',g:['#9aa8ff','#5a6bd9'],img:U('1524351199678-941a58a3df50'),d:'Smooth, chilled cheesecake crowned with a luscious blueberry compote.',v:[['Slice',200],['500 g',900],['1 kg',1700]]},
+ {id:'kn',name:'Kunafa',cat:'Kunafa',tag:'Signature',emoji:'🧀',g:['#f6b94d','#d9822b'],img:U('1579888944880-d98341245702'),d:'Crispy golden kataifi with a gooey cheese centre, drenched in fragrant syrup.',v:[['Small box',350],['Regular box',650],['Large box',1200]]},
+ {id:'kn2',name:'Chocolate Kunafa',cat:'Kunafa',tag:'Trending',emoji:'🍫',g:['#7a4a2f','#3b1f1a'],img:U('1551024601-bec78aea704b'),d:'The viral dessert: crunchy kunafa meets molten chocolate. Dangerously good.',v:[['Small box',400],['Regular box',720],['Large box',1300]]}
+];
+var CATS=['All','Cakes','Cupcakes','Cheesecakes','Kunafa'];
+var HERO=U('1578985545062-69928b1d9587',900);
+var GAL=['1578985545062-69928b1d9587','1464349095431-e9a21285b5f3','1426869884541-df7117556757','1533134242443-d4fd215305ad','1586788680434-30d324b2d46f','1587668178277-295251f900ce','1565958011703-44f9829ba187','1524351199678-941a58a3df50'];
+
+/* ---------- helpers ---------- */
+function waUrl(t){return 'https://wa.me/'+PHONE+(t?'?text='+encodeURIComponent(t):'')}
+function toast(m){var t=$('#toast');t.textContent=m;t.classList.add('show');clearTimeout(toast.t);toast.t=setTimeout(function(){t.classList.remove('show')},2600)}
+function fallback(img,p){ /* graceful placeholder if a photo can't load */
+  var par=img.parentNode;img.style.display='none';
+  if(p&&p.g){par.style.background='linear-gradient(135deg,'+p.g[0]+','+p.g[1]+')'}else{par.style.background='linear-gradient(135deg,#ffc2d4,#ff7aa2)'}
+  if(!par.querySelector('.em')){var s=document.createElement('span');s.className='em';s.textContent=(p&&p.emoji)||'🎂';s.style.cssText='font-size:3.4rem;position:absolute;inset:0;display:grid;place-items:center;min-height:120px';par.appendChild(s)}
+}
+function mkImg(src,alt,p){var i=new Image();i.alt=alt;i.loading='lazy';i.src=src;i.onerror=function(){fallback(i,p)};return i}
+function confetti(){var cols=['#ff7aa2','#8b1e4a','#f0b24a','#b9ead6','#fff','#25d366'];for(var i=0;i<70;i++){(function(){var c=document.createElement('i');c.className='cf';c.style.left=Math.random()*100+'vw';c.style.background=cols[Math.floor(Math.random()*cols.length)];c.style.animationDelay=Math.random()*.5+'s';c.style.animationDuration=1.6+Math.random()*1.6+'s';c.style.borderRadius=Math.random()>.5?'50%':'2px';document.body.appendChild(c);setTimeout(function(){c.remove()},3800)})()}}
+
+/* ---------- WhatsApp links ---------- */
+$$('.waLink').forEach(function(a){a.href=waUrl("Hi "+BIZ+"! 👋 I'd like to know more about your cakes.")});
+$('#navWa').href=waUrl("Hi "+BIZ+"! 👋 I'd like to place a cake order.");
+$('#yr').textContent=new Date().getFullYear();
+
+/* ---------- loader / header ---------- */
+window.addEventListener('load',function(){setTimeout(function(){$('#loader').classList.add('hide')},900)});
+setTimeout(function(){$('#loader').classList.add('hide')},3500);
+var hd=$('#hd');function onScroll(){hd.classList.toggle('scrolled',window.scrollY>30)}onScroll();window.addEventListener('scroll',onScroll,{passive:true});
+$('#burger').onclick=function(){this.classList.toggle('open');$('#links').classList.toggle('open')};
+$$('#links a').forEach(function(a){a.onclick=function(){$('#burger').classList.remove('open');$('#links').classList.remove('open')}});
+
+/* hero image + sprinkles + marquee */
+$('.hero-img').replaceChild(mkImg(HERO,'Freshly baked celebration cake',{g:['#ffc2d4','#ff7aa2'],emoji:'🎂'}),$('.hero-img img'));
+(function(){var h=$('.hero'),cols=['#ff7aa2','#f0b24a','#b9ead6','#8b1e4a','#9aa8ff'];for(var i=0;i<16;i++){var s=document.createElement('i');s.className='sprinkle';s.style.left=Math.random()*100+'%';s.style.background=cols[i%cols.length];s.style.animationDuration=8+Math.random()*10+'s';s.style.animationDelay=-Math.random()*14+'s';s.style.transform='rotate('+Math.random()*180+'deg)';h.appendChild(s)}})();
+(function(){var w=['🎂 Birthday Cakes','🧁 Cupcakes','🍰 Cheesecakes','🧀 Kunafa','💝 Anniversary','🍫 Chocolate','🎉 Custom Designs','🧸 Teddy Cakes'];var h='';for(var k=0;k<2;k++)w.forEach(function(x){h+='<span>'+x+'</span>'});$('#mq').innerHTML=h})();
+
+/* ---------- menu ---------- */
+var favs=[];try{favs=JSON.parse(localStorage.getItem('eo_favs')||'[]')}catch(e){}
+var sel={}; /* selected variant index per product */
+function renderFilters(){var f=$('#filters');CATS.forEach(function(c,i){var b=document.createElement('button');b.className='f'+(i===0?' on':'');b.textContent=c;b.onclick=function(){$$('.f',f).forEach(function(x){x.classList.remove('on')});b.classList.add('on');filter(c)};f.appendChild(b)})}
+function filter(c){$$('.card').forEach(function(el,i){var show=c==='All'||el.dataset.cat===c;el.classList.toggle('hide',!show);if(show){el.classList.remove('pop');void el.offsetWidth;el.style.animationDelay=(i%6)*60+'ms';el.classList.add('pop')}})}
+function renderMenu(){
+  var g=$('#grid');
+  P.forEach(function(p,idx){
+    sel[p.id]=0;
+    var c=document.createElement('article');c.className='card rv';c.dataset.cat=p.cat;c.style.transitionDelay=(idx%4)*70+'ms';
+    var th=document.createElement('div');th.className='thumb';th.style.background='linear-gradient(135deg,'+p.g[0]+','+p.g[1]+')';
+    th.appendChild(mkImg(p.img,p.name,p));
+    th.insertAdjacentHTML('beforeend','<span class="tag">'+p.tag+'</span>');
+    var fv=document.createElement('button');fv.className='fav'+(favs.indexOf(p.id)>-1?' on':'');fv.innerHTML='❤️';fv.setAttribute('aria-label','Favourite');
+    fv.onclick=function(){var i=favs.indexOf(p.id);if(i>-1){favs.splice(i,1)}else{favs.push(p.id);toast('Saved '+p.name+' to favourites 💖')}fv.classList.toggle('on',i===-1);try{localStorage.setItem('eo_favs',JSON.stringify(favs))}catch(e){}};
+    th.appendChild(fv);c.appendChild(th);
+    var b=document.createElement('div');b.className='cbody';
+    b.innerHTML='<h3>'+p.name+'</h3><p>'+p.d+'</p><div class="sizes"></div><div class="crow"><div class="price"><span class="pv"></span><small>approx.</small></div><button class="add">＋ Add</button></div>';
+    var sz=$('.sizes',b),pv=$('.pv',b);
+    p.v.forEach(function(v,i){var s=document.createElement('button');s.className='sz'+(i===0?' on':'');s.textContent=v[0];s.onclick=function(){sel[p.id]=i;$$('.sz',sz).forEach(function(x){x.classList.remove('on')});s.classList.add('on');pv.textContent=rs(v[1])};sz.appendChild(s)});
+    pv.textContent=rs(p.v[0][1]);
+    $('.add',b).onclick=function(e){var v=p.v[sel[p.id]];addItem({key:p.id+'|'+v[0],name:p.name,label:v[0],price:v[1],img:p.img,emoji:p.emoji});flyTo(e.currentTarget)};
+    c.appendChild(b);
+    /* 3D tilt on desktop */
+    c.addEventListener('mousemove',function(e){if(window.innerWidth<900)return;var r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;c.style.transition='box-shadow .35s';c.style.transform='perspective(900px) rotateY('+x*7+'deg) rotateX('+(-y*7)+'deg) translateY(-6px)'});
+    c.addEventListener('mouseleave',function(){c.style.transition='transform .5s,box-shadow .35s';c.style.transform=''});
+    g.appendChild(c);
+  });
+}
+renderFilters();renderMenu();
+
+/* ---------- basket ---------- */
+var cart=[];try{cart=JSON.parse(localStorage.getItem('eo_cart')||'[]')}catch(e){cart=[]}
+var mode='Pickup';
+function save(){try{localStorage.setItem('eo_cart',JSON.stringify(cart))}catch(e){}}
+function addItem(it){var f=cart.filter(function(c){return c.key===it.key})[0];if(f){f.qty++}else{it.qty=1;cart.push(it)}save();renderCart();toast('Added '+it.name+' 🎉');var b=$('#cartCount');b.parentNode.animate([{transform:'scale(1)'},{transform:'scale(1.3) rotate(-10deg)'},{transform:'scale(1)'}],{duration:450})}
+function total(){return cart.reduce(function(s,c){return s+c.price*c.qty},0)}
+function renderCart(){
+  var n=cart.reduce(function(s,c){return s+c.qty},0),cb=$('#cartCount');cb.textContent=n;cb.classList.toggle('show',n>0);
+  var box=$('#items');box.innerHTML='';
+  if(!cart.length){box.innerHTML='<div class="empty"><div>🎂</div><b>Your basket is empty</b><p>Add a cake you love — or just message us directly.</p></div>';$('#formWrap').style.display='none'}
+  else{$('#formWrap').style.display='block';
+    cart.forEach(function(c,i){var d=document.createElement('div');d.className='it';
+      var im=document.createElement('div');im.className='im';if(c.img){im.appendChild(mkImg(c.img,c.name,{emoji:c.emoji}))}else{im.textContent=c.emoji||'🎂'}
+      d.appendChild(im);
+      var m=document.createElement('div');m.className='m';m.innerHTML='<b></b><span></span><em>'+rs(c.price*c.qty)+'</em>';$('b',m).textContent=c.name;$('span',m).textContent=c.label;d.appendChild(m);
+      var q=document.createElement('div');q.className='qty';q.innerHTML='<button aria-label="Less">−</button><span>'+c.qty+'</span><button aria-label="More">+</button>';
+      var bs=$$('button',q);bs[0].onclick=function(){c.qty--;if(c.qty<=0)cart.splice(i,1);save();renderCart()};bs[1].onclick=function(){c.qty++;save();renderCart()};
+      d.appendChild(q);box.appendChild(d)})}
+  $('#total').textContent=rs(total());
+}
+function openD(){$('#drawer').classList.add('open');$('#ov').classList.add('open');document.body.style.overflow='hidden'}
+function closeD(){$('#drawer').classList.remove('open');$('#ov').classList.remove('open');document.body.style.overflow=''}
+$('#cartBtn').onclick=openD;$('#closeD').onclick=closeD;$('#ov').onclick=closeD;
+$$('#mode button').forEach(function(b){b.onclick=function(){mode=b.dataset.m;$$('#mode button').forEach(function(x){x.classList.remove('on')});b.classList.add('on');$('#addrBox').style.display=mode==='Delivery'?'block':'none'}});
+(function(){var d=new Date();d.setMinutes(d.getMinutes()-d.getTimezoneOffset());$('#fDate').min=d.toISOString().slice(0,10)})();
+$('#sendOrder').onclick=function(){
+  if(!cart.length){toast('Add something yummy first 🍰');return}
+  var name=$('#fName').value.trim();if(!name){toast('Please enter your name');$('#fName').focus();return}
+  if(mode==='Delivery'&&!$('#fAddr').value.trim()){toast('Please add a delivery address');$('#fAddr').focus();return}
+  var L=['Hello '+BIZ+'! 🎂','I would like to place an order:',''];
+  cart.forEach(function(c,i){L.push((i+1)+'. '+c.name+' ('+c.label+') × '+c.qty+' — '+rs(c.price*c.qty))});
+  L.push('','*Estimated total: '+rs(total())+'*','');
+  L.push('Name: '+name);
+  var ph=$('#fPhone').value.trim();if(ph)L.push('Phone: '+ph);
+  var dt=$('#fDate').value,tm=$('#fTime').value;
+  if(dt)L.push('Date needed: '+dt.split('-').reverse().join('/')+(tm?' at '+tm:''));
+  L.push('Mode: '+mode);
+  if(mode==='Delivery')L.push('Address: '+$('#fAddr').value.trim());
+  var nt=$('#fNote').value.trim();if(nt)L.push('Message/Notes: '+nt);
+  L.push('','Please confirm availability & final price. Thank you! 🙏');
+  confetti();toast('Opening WhatsApp… 💬');
+  setTimeout(function(){window.open(waUrl(L.join('\n')),'_blank','noopener')},700);
+};
+function flyTo(btn){var r=btn.getBoundingClientRect(),t=$('#cartBtn').getBoundingClientRect();var e=document.createElement('div');e.textContent='🍰';e.style.cssText='position:fixed;z-index:500;font-size:1.6rem;left:'+(r.left+r.width/2)+'px;top:'+r.top+'px;pointer-events:none';document.body.appendChild(e);
+  var a=e.animate([{transform:'translate(0,0) scale(1)',opacity:1},{transform:'translate('+(t.left-r.left)+'px,'+(t.top-r.top)+'px) scale(.3)',opacity:.2}],{duration:750,easing:'cubic-bezier(.5,-.3,.6,1)'});a.onfinish=function(){e.remove()}}
+renderCart();
+
+/* ---------- cake builder ---------- */
+var FL=[['Chocolate',650,'#6b3a2a'],['Vanilla',550,'#f6e3b4'],['Red Velvet',750,'#b3243f'],['Butterscotch',620,'#f0c26a'],['Strawberry',680,'#ffb3c1'],['Black Forest',600,'#4a2a2e']];
+var TI=[['1 tier',1],['2 tiers',1.9],['3 tiers',2.7]];
+var WT=[['500 g',.5],['1 kg',1],['1.5 kg',1.5],['2 kg',2]];
+var CO=['#ffffff','#ffc2d4','#ff7aa2','#b9ead6','#9aa8ff','#f0b24a','#6b3a2a'];
+var B={f:0,t:0,w:1,c:1,egg:false};
+function pills(id,arr,key){var box=$(id);arr.forEach(function(a,i){var b=document.createElement('button');b.className='pill'+(i===B[key]?' on':'');b.textContent=a[0];b.onclick=function(){B[key]=i;$$('.pill',box).forEach(function(x){x.classList.remove('on')});b.classList.add('on');draw()};box.appendChild(b)})}
+pills('#bFlavour',FL,'f');pills('#bTiers',TI,'t');pills('#bWeight',WT,'w');
+(function(){var box=$('#bColor');CO.forEach(function(c,i){var s=document.createElement('button');s.className='sw'+(i===B.c?' on':'');s.style.background=c;s.setAttribute('aria-label','Colour '+(i+1));s.onclick=function(){B.c=i;$$('.sw',box).forEach(function(x){x.classList.remove('on')});s.classList.add('on');draw()};box.appendChild(s)})})();
+$('#bMsg').oninput=draw;$('#bEgg').onchange=function(){B.egg=this.checked;draw()};
+function bPrice(){var base=FL[B.f][1]*WT[B.w][1]*TI[B.t][1];return Math.round((base+(B.egg?50:0))/10)*10}
+function esc(s){return s.replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
+function draw(){
+  var n=B.t+1,sp=FL[B.f][2],fr=CO[B.c],msg=esc($('#bMsg').value.trim()),h=''; 
+  var tierH=62,widths=[190,150,112],y=250;
+  /* plate */
+  h+='<ellipse cx="150" cy="288" rx="130" ry="16" fill="#fff" stroke="#f0dce3"/><ellipse cx="150" cy="284" rx="112" ry="10" fill="#fde6ee"/>';
+  var tops=[];
+  for(var i=0;i<n;i++){
+    var w=widths[i]||100,x=150-w/2,top=y-tierH;
+    h+='<g class="t"><rect x="'+x+'" y="'+top+'" width="'+w+'" height="'+tierH+'" rx="12" fill="'+sp+'"/>';
+    h+='<rect x="'+x+'" y="'+(top+tierH/2-4)+'" width="'+w+'" height="8" fill="'+fr+'" opacity=".95"/>';
+    h+='<path d="M'+x+' '+(top+10)+' Q'+(x+w*.1)+' '+(top+34)+' '+(x+w*.2)+' '+(top+14)+' T'+(x+w*.4)+' '+(top+16)+' T'+(x+w*.6)+' '+(top+18)+' T'+(x+w*.8)+' '+(top+16)+' T'+(x+w)+' '+(top+10)+' L'+(x+w)+' '+top+' L'+x+' '+top+'Z" fill="'+fr+'"/>';
+    for(var k=0;k<5;k++){var dx=x+w*(.12+k*.19);h+='<circle cx="'+dx+'" cy="'+(top+2)+'" r="5" fill="#ff7aa2" stroke="#fff" stroke-width="1.5"/>'}
+    h+='</g>';
+    tops.push(top);y=top+4;
+  }
+  var tt=tops[tops.length-1];
+  /* topper */
+  h+='<g><line x1="150" y1="'+(tt-2)+'" x2="150" y2="'+(tt-30)+'" stroke="#8b1e4a" stroke-width="3"/><circle cx="150" cy="'+(tt-38)+'" r="9" fill="#e5384f"/><path d="M150 '+(tt-47)+' q8 -8 12 -2" stroke="#3fb97a" stroke-width="3" fill="none" stroke-linecap="round"/></g>';
+  if(msg){var my=tops[0]+tierH/2+34;h+='<text x="150" y="'+my+'" text-anchor="middle" font-family="Pacifico,cursive" font-size="'+(msg.length>14?12:15)+'" fill="'+(CO[B.c]==='#ffffff'||CO[B.c]==='#b9ead6'||CO[B.c]==='#f0b24a'||CO[B.c]==='#ffc2d4'?'#8b1e4a':'#fff')+'">'+msg+'</text>'}
+  $('#cakeSvg').innerHTML=h;
+  var el=$('#est');el.textContent=rs(bPrice());
+  $('#cakeSvg').animate([{transform:'scale(.96)'},{transform:'scale(1)'}],{duration:280,easing:'ease-out'});
+}
+function bDesc(){return FL[B.f][0]+' cake · '+TI[B.t][0]+' · '+WT[B.w][0]+' · '+(B.egg?'Eggless':'With egg')+' · frosting '+['white','light pink','pink','mint','lavender','golden','chocolate'][B.c]}
+$('#bSend').onclick=function(){
+  var m=$('#bMsg').value.trim();
+  var L=['Hello '+BIZ+'! 🎂','I designed a custom cake on your website:','','• Flavour: '+FL[B.f][0],'• Tiers: '+TI[B.t][0],'• Weight: '+WT[B.w][0],'• Eggless: '+(B.egg?'Yes':'No'),'• Frosting: '+['White','Light pink','Pink','Mint','Lavender','Golden','Chocolate'][B.c],'• Message on cake: '+(m||'—'),'','*Estimated price: '+rs(bPrice())+'*','','Could you confirm the price & availability? Date needed: ']; 
+  confetti();toast('Opening WhatsApp… 💬');setTimeout(function(){window.open(waUrl(L.join('\n')),'_blank','noopener')},700);
+};
+$('#bAdd').onclick=function(){addItem({key:'custom|'+bDesc()+'|'+$('#bMsg').value,name:'Custom Cake'+($('#bMsg').value.trim()?' – “'+$('#bMsg').value.trim()+'”':''),label:bDesc(),price:bPrice(),emoji:'🎨'});openD()};
+draw();
+
+/* ---------- gallery + lightbox ---------- */
+(function(){var g=$('#gal'),lb=$('#lb'),li=$('img',lb);
+  GAL.forEach(function(id,i){var f=document.createElement('figure');var im=mkImg(U(id,700),'Elsa\'s Oven creation '+(i+1),{emoji:['🎂','🍓','🧁','🍰','❤️','🍪','🍯','🫐'][i]});f.appendChild(im);
+    f.style.minHeight=(i%3===0?260:i%3===1?200:230)+'px';
+    f.onclick=function(){if(im.style.display==='none')return;li.src=U(id,1400);lb.classList.add('open')};g.appendChild(f)});
+  lb.onclick=function(){lb.classList.remove('open')};
+})();
+
+/* ---------- reveal + counters ---------- */
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
+$$('.rv').forEach(function(el){io.observe(el)});
+var co=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;var el=e.target,t=parseFloat(el.dataset.n),dec=parseInt(el.dataset.d||0),p=el.dataset.p||'',s=performance.now();
+  (function step(now){var k=Math.min((now-s)/1600,1),v=t*(1-Math.pow(1-k,3));el.textContent=v.toFixed(dec)+(k===1?p:'');if(k<1)requestAnimationFrame(step)})(s);co.unobserve(el)})},{threshold:.5});
+$$('[data-n]').forEach(function(el){co.observe(el)});
+
+document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeD();$('#lb').classList.remove('open')}});
+})();
+</script>
+</body>
+</html>
